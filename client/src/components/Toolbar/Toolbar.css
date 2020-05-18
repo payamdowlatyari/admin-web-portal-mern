@@ -1,0 +1,39 @@
+
+#side-bar{
+    padding-left: 25px;
+    padding-bottom: 10px;
+    z-index: 10000;
+    min-height: 100vh !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px; 
+    position: sticky;
+}
+
+#side-bar a{
+    text-decoration: none;
+    color: #dddddd;    
+}
+
+#side-bar a:hover{
+    text-decoration: none;
+    color: #ffffff;
+    padding-left: 5px;
+    transition: .5s;
+}
+
+#side-bar div{
+    margin-bottom: 10px;
+}
+
+#dash-link{
+    font-size: 24px;
+    padding-left: 20px;
+}
+
+#sticky-sidebar{
+    top: 0;
+    left: 0;
+    bottom: 0;
+}

@@ -1,0 +1,13 @@
+.card-stats {
+  box-shadow: 1px 1px #888888;
+}
+
+.card-stats:hover {
+  box-shadow: 2px 2px #888888;
+  transition: 0.5s;
+}
+
+.jumbo {
+  background: transparent;
+  border: none;
+}

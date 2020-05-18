@@ -1,0 +1,16 @@
+
+.img-link {
+  width: 100%;
+}
+
+.img-link:hover {
+  width: 101%;
+  transition: 0.5s;
+}
+
+.dashboard {
+  margin: 3em;
+  text-align: center;
+  color: #666666;
+}
+
