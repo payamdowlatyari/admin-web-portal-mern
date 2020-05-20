@@ -1,14 +1,14 @@
-
 #side-bar{
     padding-left: 25px;
     padding-bottom: 10px;
     z-index: 10000;
     min-height: 100vh !important;
+    height: 100%;
     top: 0;
     bottom: 0;
     left: 0;
-    width: 250px; 
-    position: sticky;
+    width: 100%;
+    position: fixed;
 }
 
 #side-bar a{
@@ -19,7 +19,7 @@
 #side-bar a:hover{
     text-decoration: none;
     color: #ffffff;
-    padding-left: 5px;
+    padding-left: 3px;
     transition: .5s;
 }
 

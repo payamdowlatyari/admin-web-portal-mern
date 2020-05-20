@@ -1,10 +1,12 @@
 {
-  "name": "mern-auth",
+  "name": "admin-web-portal-mern",
   "version": "1.0.0",
-  "description": "Mern Auth Example",
+  "description": "Full-stack MERN application for admin web portal CalPlug",
   "main": "server.js",
   "scripts": {
+    "build": "cd client && npm run build",
     "client-install": "npm install --prefix client",
+    "heroku-postbuild": "npm run client-install && npm run build",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",

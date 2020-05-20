@@ -21,7 +21,7 @@ class Home extends Component {
           background: 'transparent',
           height: '100%',
           width: '100%',
-          zIndex: '9999999'
+          zIndex: '0'
         }} >
           <Row>
             <Col>

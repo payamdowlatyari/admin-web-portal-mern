@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './UserAdmin.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProfilesList from './Data/ProfilesList';

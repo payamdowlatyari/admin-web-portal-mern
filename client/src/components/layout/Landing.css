@@ -1,0 +1,26 @@
+.social-link{
+    position: relative;
+    margin: 10px;
+    text-align: center;
+}
+
+.social-link .fa{
+    padding: 10px;
+}
+
+.social-link button{
+    color: #008ae6;
+    background-color: transparent;
+    border: transparent;
+}
+
+.social-link button:hover{
+    color: #444444;
+    transition: .3s;
+}
+
+.social-link button:focus{
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}

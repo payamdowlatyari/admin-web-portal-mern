@@ -14,7 +14,6 @@ import Home from './components/Home';
 import Optimizer from './components/Optimizer';
 import UserAdmin from './components/UserAdmin';
 import General from './components/General';
-import "./App.css";
 import Container from "react-bootstrap/Container";
 import Toolbar from './components/Toolbar/Toolbar';
 import Settings from './components/Settings';

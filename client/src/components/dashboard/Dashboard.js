@@ -19,7 +19,7 @@ class Dashboard extends Component {
         <div style={{ position: 'relative', float: "right", marginTop: '-150px' }}>
           <b>Hello,</b> {user.name.split(" ")[0]}
         </div>
-        <div style={{ position: 'relative', float: "right", marginTop: '-100px' }}>
+        <div style={{ position: 'relative', float: "right", marginTop: '-120px' }}>
           <Link
             style={{
               width: "100px"

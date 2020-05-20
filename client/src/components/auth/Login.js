@@ -55,13 +55,13 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
-        <div style={{ marginTop: "4rem", width: "400px", float: "right" }} className="row">
-          <div className="col s8 offset-s2">
+      <div className="container" style={{ marginTop: "10vh", width: "25%", float: "center", minWidth: "300px" }}>
+        <div className="row">
+          <div className="col">
 
             <div className="col s12" style={{ textAlign: 'right' }}>
               <h3>
-                <b>Login</b> bellow
+                <b>Login</b> below
               </h3>
 
             </div>

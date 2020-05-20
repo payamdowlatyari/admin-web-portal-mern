@@ -63,7 +63,7 @@ class Toolbar extends React.Component {
               </div>}
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}
-            styles={{ sidebar: { marginTop: "60px", width: "250px", bottom: "0" } }}
+            styles={{ sidebar: { marginTop: "60px", width: "260px", bottom: "0" } }}
           >
             <button onClick={() => this.onSetSidebarOpen(true)}
               style={{
