@@ -10,6 +10,7 @@ const preferenceRouter = require('./routes/api/preferences');
 const userTypesRouter = require('./routes/api/userTypes');
 
 const app = express();
+const port = process.env.PORT || 5000;
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -24,7 +25,7 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(
-    db,
+    process.env.MONGODB_URI || db,
     { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("MongoDB successfully connected"))
@@ -43,7 +44,7 @@ app.use('/api/profiles', profilesRouter);
 app.use('/api/preferences', preferenceRouter);
 app.use('/api/userTypes', userTypesRouter);
 
-const port = process.env.PORT || 5000;
+
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

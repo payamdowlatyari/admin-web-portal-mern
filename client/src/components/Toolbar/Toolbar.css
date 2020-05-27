@@ -1,14 +1,20 @@
+.tool-bar{
+    z-index: auto;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    
+}
+
 #side-bar{
     padding-left: 25px;
     padding-bottom: 10px;
-    z-index: 10000;
+    z-index: 10;
     min-height: 100vh !important;
     height: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
 }
 
 #side-bar a{
@@ -33,7 +39,6 @@
 }
 
 #sticky-sidebar{
-    top: 0;
-    left: 0;
-    bottom: 0;
+    position: auto;
+    z-index: 100;
 }

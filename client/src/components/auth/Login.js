@@ -55,9 +55,9 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container" style={{ marginTop: "10vh", width: "25%", float: "center", minWidth: "300px" }}>
+      <div className="container" style={{ width: "20%", float: "center", minWidth: "300px" }}>
         <div className="row">
-          <div className="col">
+          <div className="col" style={{ marginTop: '30%' }}>
 
             <div className="col s12" style={{ textAlign: 'right' }}>
               <h3>

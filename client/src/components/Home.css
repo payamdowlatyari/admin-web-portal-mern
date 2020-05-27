@@ -1,6 +1,7 @@
 
 .img-link {
   width: 100%;
+  min-width: 200px;
 }
 
 .img-link:hover {
@@ -9,8 +10,9 @@
 }
 
 .dashboard {
-  margin: 3em;
   text-align: center;
   color: #666666;
+  padding-top: 10%;
+  padding-bottom: 10%;
 }
 

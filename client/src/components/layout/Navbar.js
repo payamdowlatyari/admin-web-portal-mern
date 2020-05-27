@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { NavLink } from 'react-router-dom';
+import './Navbar.css';
 
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-fixed">
+      <div className="nav-top">
         <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">

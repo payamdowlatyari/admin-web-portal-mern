@@ -22,6 +22,9 @@ import Analytics from './components/Analytics';
 import CreateUser from './components/Data/CreateUser';
 import CreateProfile from './components/Data/CreateProfile';
 import EditProfile from './components/Data/EditProfile';
+import Navbar from "./components/layout/Navbar";
+import './App.css';
+import Footbar from "./components/Footbar/Footbar";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -46,9 +49,12 @@ class App extends Component {
   render() {
     return (
       <Container fluid >
+
         <Provider store={store}>
           <Router>
+
             <div className="App">
+              <Navbar />
               <Toolbar />
               <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
@@ -66,9 +72,12 @@ class App extends Component {
                 <PrivateRoute exact path="/CreateProfile" component={CreateProfile} />
                 <PrivateRoute exact path="/CreateUser" component={CreateUser} />
               </Switch>
+              <Footbar />
             </div>
+
           </Router>
         </Provider>
+
       </Container>
     );
   }

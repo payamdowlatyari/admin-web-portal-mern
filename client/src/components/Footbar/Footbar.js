@@ -6,7 +6,6 @@ const Footbar = () => {
 
     <div className="footer-copyright text-center py-3">
       <nav className="navbar fixed-bottom navbar-dark bg-dark text-center">
-
         <small>
           CalPlug &copy; {new Date().getFullYear()} | All Rights Reserved
         </small>

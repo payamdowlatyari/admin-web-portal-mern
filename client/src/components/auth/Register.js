@@ -56,15 +56,13 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container" style={{ marginTop: "10vh", width: "25%", float: "center", minWidth: "300px" }}>
-        <div className="row">
-          <div className="col s8 offset-s2">
-
+      <div className="container" style={{ width: "20%", float: "center", minWidth: "300px" }}>
+        <div className="row" >
+          <div className="col" style={{ marginTop: '30%' }}>
             <div className="col s12" style={{ textAlign: 'right' }}>
               <h3>
                 <b>Register</b> below
               </h3>
-
             </div>
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group controlId="formBasicName">
@@ -95,7 +93,6 @@ class Register extends Component {
                 />
                 <span className="red-text">{errors.email}</span>
               </Form.Group>
-
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control placeholder="Password"
@@ -111,7 +108,6 @@ class Register extends Component {
                 <span className="red-text">{errors.password}</span>
               </Form.Group>
               <Form.Group controlId="formBasicPassword2">
-                {/* <Form.Label>Confirm Password</Form.Label> */}
                 <Form.Control placeholder="Confirm Password"
                   onChange={this.onChange}
                   value={this.state.password2}

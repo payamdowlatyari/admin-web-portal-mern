@@ -47,6 +47,7 @@
     "react-scripts": "3.4.1",
     "react-sidebar": "^3.0.2",
     "react-sticky": "^6.0.3",
+    "react-z-index": "^3.0.0",
     "reactstrap": "^8.4.1",
     "recharts": "^1.8.5",
     "redux": "^4.0.1",

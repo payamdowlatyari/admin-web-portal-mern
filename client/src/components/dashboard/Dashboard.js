@@ -16,10 +16,17 @@ class Dashboard extends Component {
 
     return (
       <div >
-        <div style={{ position: 'relative', float: "right", marginTop: '-150px' }}>
+        <div style={{
+          position: 'relative',
+          float: "right",
+          marginTop: '-40px',
+          marginRight: "5px",
+          color: "white",
+          zIndex: "100000"
+        }}>
           <b>Hello,</b> {user.name.split(" ")[0]}
         </div>
-        <div style={{ position: 'relative', float: "right", marginTop: '-120px' }}>
+        <div style={{ position: 'relative', float: "right", marginTop: '20px' }}>
           <Link
             style={{
               width: "100px"

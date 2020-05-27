@@ -5,10 +5,10 @@ import './Landing.css';
 class Landing extends Component {
   render() {
     return (
-      <div className="container" style={{ width: "100%", marginTop: "20vh" }}>
+      <div className="container" style={{ width: "100%" }}>
         <div className="row">
-          <div className="col text-center">
-            <div style={{ width: "30%", margin: "0 auto", marginBottom: "10px", minWidth: "250px" }}>
+          <div className="col text-center" style={{ marginTop: "20%" }}>
+            <div style={{ width: "30%", margin: "0 auto", marginBottom: "10px", minWidth: "200px" }}>
               <h3>Who We Are</h3>
               <div>
                 The Administrative Web Portal that will provide varying controls over the entire population of Smart EVSE through the Admin Interface,
