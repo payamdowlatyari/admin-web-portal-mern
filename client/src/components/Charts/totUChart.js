@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Brush
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
 import axios from "axios";
 
@@ -23,7 +23,7 @@ export default class totUChart extends PureComponent {
     return (
       <AreaChart
         width={1000}
-        height={500}
+        height={300}
         data={this.state.data}
         margin={{
           top: 10, right: 30, left: 0, bottom: 0,
@@ -33,9 +33,11 @@ export default class totUChart extends PureComponent {
         <XAxis dataKey="Time" />
         <YAxis />
         <Tooltip />
+        <Legend/>
         <Area type="monotone" dataKey="activeChargers" stackId="1" stroke="#8884d8" fill="#8884d8" />
         <Area type="monotone" dataKey="queuedChargers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-        <Brush/>
+      
+        <br></br>
       </AreaChart>
     );
   }

@@ -15,74 +15,37 @@ export default class Example extends PureComponent {
   componentDidMount() {
     axios.get("https://api.calplug.club/api.php?collection=chargerCount")
       .then(res => {
-
+        // this.setState({ data: res.data.result})
         
         let tmpnum = 0;
             //console.log(this.res.data.result)
-        var d = new Date();
-        var hour = new Array(24);
-        hour[0] = 0;
-        hour[1] = 1;
-        hour[2] = 2;
-        hour[3] = 3;
-        hour[4] = 4;
-        hour[5] = 5;
-        hour[6] = 6;
-        hour[7] = 7;
-        hour[8] = 8;
-        hour[9] = 9;
-        hour[10] = 10;
-        hour[11] = 11;
-        hour[12] = 12;
-        hour[13] = 13;
-        hour[14] = 14;
-        hour[15] = 15;
-        hour[16] = 16;
-        hour[17] = 17;
-        hour[18] = 18;
-        hour[19] = 19;
-        hour[20] = 20;
-        hour[21] = 21;
-        hour[22] = 22;
-        hour[23] = 23;
-        
-        let curHour = hour[d.getHours()]
-        for(let i = 0; i < res.data.result.length; i++)
+        var d = new Date();        
+        let curHour = d.getHours();
+        let count = 7;
+        let tempList = [];
+        console.log(curHour);
+        for(let i = curHour; i >= 0; i--)
         {
-          tmpnum = res.data.result[i].number
-          if(curHour == tmpnum && tmpnum > 7)
+          
+          if(count > 0)
           {
-            let count = 7;
-            for(let j = tmpnum; j > 0; j--)
-            {  
-              if(count > 0)
-              {
-                this.setState({ data: res.data.result[j] });
-                count--;
-                console.log(j)
-                console.log(this.state.data)
+            for(let j = 0; j < res.data.result.length; j++) {
+              tmpnum = res.data.result[j].number;
+              if(tmpnum === i) {
+                tempList.push(res.data.result[j]);
+                console.log(res.data.result[j]);
+                break;
               }
             }
-          }
-          else 
-          {
-            let count = 7;
-            for(let k = tmpnum; k > 0;k--)
-            {
-              if(count > 0)
-              {
-                this.setState({ data: res.data.result[k]})
-                k--;
-                count--;
-                if (k == 0)
-                {
-                  k = 23;
-                }
-              }
-            }
+            if(i == 0) i = 23;
+            count--;
+          } else {
+            break;
           }
         }
-        console.log(this.state.data)
+        this.setState({ data: tempList.reverse() });
+        
+       
       })
     }
    
