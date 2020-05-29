@@ -1,40 +1,18 @@
 import React, { PureComponent } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from "react-bootstrap/Container";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, Brush
 } from 'recharts';
-
-const data = [
-  {
-    name: '1 pm', Active_user: 4000, Total_user: 2400, amt: 2400,
-  },
-  {
-    name: '2 pm', Active_user: 3000, Total_user: 1398, amt: 2210,
-  },
-  {
-    name: '3 pm', Active_user: 2000, Total_user: 9800, amt: 2290,
-  },
-  {
-    name: '4 pm', Active_user: 2780, Total_user: 3908, amt: 2000,
-  },
-  {
-    name: '5 pm', Active_user: 1890, Total_user: 4800, amt: 2181,
-  },
-  {
-    name: '6 pm', Active_user: 2390, Total_user: 4300, amt: 2500,
-  },
-  {
-    name: '7 pm', Active_user: 3490, Total_user: 2400, amt: 2100,
-  },
-];
+import axios from "axios";
 
 const CustomizedDot = (props) => {
   const {
     cx, cy, value,
   } = props;
 
-  if (value > 2500) {
+  if (value > 1500) {
     return (
       <svg x={cx - 10} y={cy - 10} width={20} height={20} fill="green" viewBox="0 0 1024 1024">
         <path d="M512 1009.984c-274.912 0-497.76-222.848-497.76-497.76s222.848-497.76 497.76-497.76c274.912 0 497.76 222.848 497.76 497.76s-222.848 497.76-497.76 497.76zM340.768 295.936c-39.488 0-71.52 32.8-71.52 73.248s32.032 73.248 71.52 73.248c39.488 0 71.52-32.8 71.52-73.248s-32.032-73.248-71.52-73.248zM686.176 296.704c-39.488 0-71.52 32.8-71.52 73.248s32.032 73.248 71.52 73.248c39.488 0 71.52-32.8 71.52-73.248s-32.032-73.248-71.52-73.248zM772.928 555.392c-18.752-8.864-40.928-0.576-49.632 18.528-40.224 88.576-120.256 143.552-208.832 143.552-85.952 0-164.864-52.64-205.952-137.376-9.184-18.912-31.648-26.592-50.08-17.28-18.464 9.408-21.216 21.472-15.936 32.64 52.8 111.424 155.232 186.784 269.76 186.784 117.984 0 217.12-70.944 269.76-186.784 8.672-19.136 9.568-31.2-9.12-40.096z" />
@@ -52,56 +30,79 @@ const CustomizedDot = (props) => {
 export default class Carbons extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/9y9zrpjp/';
 
+  state = {
+    data: []
+
+  };
+
+
+  componentDidMount() {
+    axios.get("https://api.calplug.club/api.php?collection=emissions")
+      .then(res => {
+        this.setState({ data: res.data.result });
+      })
+  }
   render() {
     return (
-      <div>
-        <Row>
-          <Col>
-            <h5 style={{ textALign: "middle" }}> Carbon Emissions</h5>
-            <hr></hr>
-            <LineChart
-              width={500}
-              height={300}
-              data={data}
-              margin={{
-                top: 20, right: 50, left: 20, bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <ReferenceLine x="3 pm" stroke="red" label="Max CO2" />
-              <ReferenceLine y={9800} label="Max" stroke="red" />
-              <Line type="monotone" dataKey="Active_user" stroke="#8884d8" />
-              <Line type="monotone" dataKey="Total_user" stroke="#82ca9d" />
-            </LineChart>
-          </Col>
-
-          <Col>
-            <h5 style={{ textALign: "middle" }}> Carbon Deferral</h5>
-            <hr></hr>
-            <LineChart
-              width={500}
-              height={300}
-              data={data}
-              margin={{
-                top: 5, right: 30, left: 20, bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="Active_user" stroke="#8884d8" dot={<CustomizedDot />} />
-              <Line type="monotone" dataKey="Total_user" stroke="#82ca9d" />
-            </LineChart>
-          </Col>
-
+    <Container>
+     
+      <Row>
+            <br></br>
+            <span class="block-example border border-dark">
+              <LineChart
+                  width={1000}
+                  height={300}
+                  data={this.state.data}
+                  syncId="carbon"
+                  margin={{
+                  top: 20, right: 50, left: 20, bottom: 5,
+                  }}
+              >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="time" />
+                  <YAxis label={{ value: 'mTCO2', angle: -90, offset:-5 , position:'insideLeft'}} />
+                  <Tooltip />
+                  <Legend />
+                  <ReferenceLine y={9800} label="Max" stroke="red" />
+                  <Line type="monotone" dataKey="activeUser" stroke="#8884d8" />
+                  <Line type="monotone" dataKey="totalUser" stroke="#82ca9d" />
+                  <Brush/>   
+              </LineChart>
+              </span>
         </Row>
-      </div>
+              <br></br>
+              <h5 style = {{ textALign: "middle" }}> Carbon Deferral</h5> 
+             
+              <br></br>
+              <span class="block-example border border-dark"></span>
+              <br></br>
+        <Row>
+         <span class="block-example border border-dark">
+            <br></br>
+            
+            <LineChart
+                width={1000}
+                height={300}
+                data={this.state.data}
+                syncId="carbon"
+                margin={{
+                top: 5, right: 30, left: 20, bottom: 5, 
+                }}
+            >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="time" />
+                <YAxis label={{ value: 'mTCO2', angle: -90, offset: -5 , position:'insideLeft'}} />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="curDef" stroke="#8884d8" dot={<CustomizedDot />} />
+                <Line type="monotone" dataKey="preDef" stroke="#82ca9d" />
+            </LineChart>
+           
+       
+         </span>
+      </Row>
+      
+    </Container>
     );
   }
 }
