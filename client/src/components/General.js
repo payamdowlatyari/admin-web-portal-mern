@@ -14,41 +14,49 @@ class Home extends Component {
 
   render() {
     return (
-      <Container >
-        <br></br>
-        <h1>General System Performance</h1>
-        <hr></hr>
-      
-        <Row>
-          <StatsCard />
-        </Row>
+      <Container>
+          <br></br>
+          <h1>General System Performance</h1>
+          <hr></hr>
         
+          <Row>
+            <StatsCard />
+          </Row>
+
+
+          <Col md="12" className="card">
+            <br></br>
+            <h5 style = {{ textALign: "middle" }}> Charger Completion Status</h5>
+            <span className="block-example border border-dark"></span>
+            <br></br>
+            <span className="block-example border border-dark">
+            <TotalChart/>
+            <br></br>
+            </span>
+            </Col>
+                 
+            <br></br>
+            <Col md="12" className="card">
+              <br></br>
+              <h5 style = {{ textALign: "middle" }}> Charger Option</h5>
+              <span className="block-example border border-dark"></span>
+              <br></br>
+              <span className="block-example border border-dark">
+              <ChargeOpt/>
+              <br></br>
+              </span>
+            </Col>
+
         
-        
-        
-        <h5 style = {{ textALign: "middle" }}> Charger Completion Status</h5>
-        <br></br>
-        
-        <span className="block-example border border-dark"></span>
-        
-        <br></br>
-        <Row>
-        <TotalChart/>
-        </Row>
-        
-        <br></br>
-      
-        <ChargeOpt/>
+          <br></br>
           
-        <br></br>
-        
-        <hr></hr>
-        <br></br>
-        <Row>
-          <Col md="12">
-            <EnergyDemand />
-          </Col>
-        </Row>
+          <hr></hr>
+          <br></br>
+          <Row>
+            <Col md="12">
+              <EnergyDemand />
+            </Col>
+          </Row>
         
       </Container>
     );
