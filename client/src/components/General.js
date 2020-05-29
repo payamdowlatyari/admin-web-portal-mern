@@ -6,6 +6,8 @@ import Bar from './Charts/Bar';
 import Doughnut from './Charts/Doughnut';
 import StatsCard from './Charts/StatsCard';
 import EnergyDemand from './Charts/EnergyDemand';
+import TotalChart from './Charts/totUChart';
+import ChargeOpt from './Charts/chargeOpt';
 
 
 class Home extends Component {
@@ -16,23 +18,38 @@ class Home extends Component {
         <br></br>
         <h1>General System Performance</h1>
         <hr></hr>
-        <StatsCard />
+      
         <Row>
-          <Col >
-            <Doughnut />
-          </Col>
-          <Col>
-            <Bar />
-          </Col>
-          <br></br>
+          <StatsCard />
         </Row>
+        
+        
+        
+        
+        <h5 style = {{ textALign: "middle" }}> Charger Completion Status</h5>
+        <br></br>
+        
+        <span className="block-example border border-dark"></span>
+        
+        <br></br>
+        <Row>
+        <TotalChart/>
+        </Row>
+        
+        <br></br>
+      
+        <ChargeOpt/>
+          
+        <br></br>
+        
         <hr></hr>
         <br></br>
         <Row>
-          <Col>
+          <Col md="12">
             <EnergyDemand />
           </Col>
         </Row>
+        
       </Container>
     );
   }
