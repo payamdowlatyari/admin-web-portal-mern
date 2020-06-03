@@ -49,7 +49,10 @@ class Toolbar extends React.Component {
                     <NavLink to="/UserAdmin"><FaUser /> User Administration</NavLink>
                   </div>
                   <div>
-                    <NavLink to="/CreateUser"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create User</NavLink>
+                    <NavLink to="/CreateAdmin"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register Admin</NavLink>
+                  </div>
+                  <div>
+                    <NavLink to="/CreateUser"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register User</NavLink>
                   </div>
                   <div>
                     <NavLink to="/CreateProfile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create Profile</NavLink>

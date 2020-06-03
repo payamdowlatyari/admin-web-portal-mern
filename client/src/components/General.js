@@ -9,7 +9,6 @@ import EnergyDemand from './Charts/EnergyDemand';
 import TotalChart from './Charts/totUChart';
 import ChargeOpt from './Charts/chargeOpt';
 
-
 class Home extends Component {
 
   render() {
@@ -18,30 +17,28 @@ class Home extends Component {
         <br></br>
         <h1>General System Performance</h1>
         <hr></hr>
-      
+
         <Row>
           <StatsCard />
         </Row>
-        
-        
-        
-        
-        <h5 style = {{ textALign: "middle" }}> Charger Completion Status</h5>
+
+        <h5 style={{ textALign: "middle" }}> Charger Completion Status</h5>
+
         <br></br>
-        
+
         <span className="block-example border border-dark"></span>
-        
+
         <br></br>
         <Row>
-        <TotalChart/>
+          <TotalChart />
         </Row>
-        
+
         <br></br>
-      
-        <ChargeOpt/>
-          
+
+        <ChargeOpt />
+
         <br></br>
-        
+
         <hr></hr>
         <br></br>
         <Row>
@@ -49,7 +46,7 @@ class Home extends Component {
             <EnergyDemand />
           </Col>
         </Row>
-        
+
       </Container>
     );
   }

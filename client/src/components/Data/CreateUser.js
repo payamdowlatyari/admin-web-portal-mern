@@ -37,7 +37,7 @@ export default class CreateUser extends Component {
     this.setState({
       username: ''
     })
-    window.location = '/UserAdmin';
+    window.location = '/CreateProfile';
   }
 
   render() {

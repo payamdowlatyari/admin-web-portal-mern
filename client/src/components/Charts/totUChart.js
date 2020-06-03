@@ -4,20 +4,20 @@ import {
 } from 'recharts';
 import axios from "axios";
 
-
 export default class totUChart extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
   state = {
-      data: []
+    data: []
   }
 
   componentDidMount() {
     axios.get("https://api.calplug.club/api.php?collection=chargerCount")
       .then(res => {
         this.setState({ data: res.data.result });
+        console.log(this.state.data);
       })
-    }
+  }
 
   render() {
     return (
@@ -35,7 +35,7 @@ export default class totUChart extends PureComponent {
         <Tooltip />
         <Area type="monotone" dataKey="activeChargers" stackId="1" stroke="#8884d8" fill="#8884d8" />
         <Area type="monotone" dataKey="queuedChargers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-        <Brush/>
+        <Brush />
       </AreaChart>
     );
   }

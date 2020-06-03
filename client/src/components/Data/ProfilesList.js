@@ -76,7 +76,7 @@ export default class ProfilesList extends Component {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody lassName="thead-light">
+          <tbody className="thead-light">
             {this.profileList()}
           </tbody>
         </table>
