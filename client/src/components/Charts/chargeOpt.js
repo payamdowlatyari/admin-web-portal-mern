@@ -15,10 +15,9 @@ export default class Example extends PureComponent {
   componentDidMount() {
     axios.get("https://api.calplug.club/api.php?collection=chargerCount")
       .then(res => {
-        // this.setState({ data: res.data.result})
+        
         
         let tmpnum = 0;
-            //console.log(this.res.data.result)
         var d = new Date();        
         let curHour = d.getHours();
         let count = 7;
@@ -37,7 +36,7 @@ export default class Example extends PureComponent {
                 break;
               }
             }
-            if(i == 0) i = 23;
+            if(i == 0) i = 24;
             count--;
           } else {
             break;
@@ -64,8 +63,8 @@ export default class Example extends PureComponent {
         <YAxis label={{ value: 'Time', angle: -90, position: 'insideLeft', offset: -5 }} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="optimize" fill="#8884d8" />
-        <Bar dataKey="chargeNow" fill="#82ca9d" />
+        <Bar dataKey="chargeNow" fill="#8884d8" />
+        <Bar dataKey="optimize" fill="#82ca9d" />
       </BarChart>
     );
   }

@@ -87,9 +87,7 @@ export default class Completionstatus extends PureComponent {
                
                 <th>Completion status </th>
                 <th>Charger Count</th>
-                {/* <th>Charger Late</th>
-                <th>Charger Total</th> */}
-               
+  
               </tr>
             </thead>
          
