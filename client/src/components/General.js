@@ -13,7 +13,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Container >
+      <Container>
         <br></br>
         <h1>General System Performance</h1>
         <hr></hr>
@@ -22,20 +22,30 @@ class Home extends Component {
           <StatsCard />
         </Row>
 
-        <h5 style={{ textALign: "middle" }}> Charger Completion Status</h5>
+
+        <Col md="12" className="card">
+          <br></br>
+          <h5 style={{ textALign: "middle" }}> Charger Completion Status</h5>
+          <span className="block-example border border-dark"></span>
+          <br></br>
+          <span className="block-example border border-dark">
+            <TotalChart />
+            <br></br>
+          </span>
+        </Col>
 
         <br></br>
+        <Col md="12" className="card">
+          <br></br>
+          <h5 style={{ textALign: "middle" }}> Charger Option</h5>
+          <span className="block-example border border-dark"></span>
+          <br></br>
+          <span className="block-example border border-dark">
+            <ChargeOpt />
+            <br></br>
+          </span>
+        </Col>
 
-        <span className="block-example border border-dark"></span>
-
-        <br></br>
-        <Row>
-          <TotalChart />
-        </Row>
-
-        <br></br>
-
-        <ChargeOpt />
 
         <br></br>
 

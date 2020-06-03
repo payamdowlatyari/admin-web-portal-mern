@@ -21,9 +21,37 @@ export default class EnergyDemand extends PureComponent {
   };
   
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=sample")
+    axios.get("https://api.calplug.club/api.php?collection=chargerCount")
       .then(res => {
-        this.setState({ data: res.data.result });
+
+    let tmpnum = 0;
+        //console.log(this.res.data.result)
+    var d = new Date();        
+    let curHour = d.getHours();
+    let count = 16;
+    let tempList = [];
+    console.log(curHour);
+    for(let i = curHour; i >= 0; i--)
+    {
+      
+      if(count > 0)
+      {
+        for(let j = 0; j < res.data.result.length; j++) {
+          tmpnum = res.data.result[j].number;
+          if(tmpnum === i) {
+            tempList.push(res.data.result[j]);
+            console.log(res.data.result[j]);
+            break;
+          }
+        }
+        if(i == 0) i = 24;
+        count--;
+      } else {
+        break;
+      }
+    }
+       this.setState({ data: tempList.reverse() });
+        
       });
     axios.get("https://api.calplug.club/api.php?collection=infoHistory")
       .then(res => {
@@ -49,10 +77,10 @@ export default class EnergyDemand extends PureComponent {
           </header>
             <AreaChart
               width={1100}
-              height={400}
+              height={500}
               data={this.state.data}
               margin={{
-              top: 10, right: 30, left: 0, bottom: 0,
+              top: 15, right: 30, left: 0, bottom: 0,
               }}
           >
               <defs>
@@ -71,13 +99,13 @@ export default class EnergyDemand extends PureComponent {
               </defs>
               <CartesianGrid strokeDasharray="3 3" />
               <ReferenceLine y={9800} label="Max" stroke="red" />
-              <XAxis dataKey="name" />
+              <XAxis dataKey="Time" />
               <YAxis label={{ value: 'MW', angle: -90, offset: 5, position:'insideLeft'}}/>
               <Tooltip />
               <Legend />
-              <Area type="monotone" dataKey="Active_users"  stroke="#8884d8" fillOpacity={1} fill="url(#colorActive)" />
-              <Area type="monotone" dataKey="Total_users" stroke="#82ca9d" fillOpacity={1} fill="url(#colorTotal)" />
-              <Area type="monotone" dataKey="Forecasted" fillOpacity={1} stroke="#ffc658" fill="url(#colorForecast)" />
+              <Area type="monotone" dataKey="activeChargers"  stroke="#8884d8" fillOpacity={1} fill="url(#colorActive)" />
+              <Area type="monotone" dataKey="totalChargers" stroke="#82ca9d" fillOpacity={1} fill="url(#colorTotal)" />
+              <Area type="monotone" dataKey="forecast" fillOpacity={1} stroke="#ffc658" fill="url(#colorForecast)" />
             </AreaChart>
 
             <br></br>

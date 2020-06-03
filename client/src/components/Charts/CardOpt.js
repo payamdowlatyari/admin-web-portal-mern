@@ -78,10 +78,6 @@ class CardOpt extends Component{
             if(curHour.replace(" ", "") === tmpHour.replace(" ", ""))
               this.setState({ emission: res.data.result[i] });
         }
-        //console.log(this.state.emission.CO2rate)
-        // console.log(this.state.emissions[2])
-        // console.log(this.state.emissions[3])
-        // console.log(this.state.emissions[4])
         
            })
 
@@ -120,8 +116,8 @@ class CardOpt extends Component{
           else 
           {
              percentE = 1 - percentE;
-             this.setState({eReduction: percentE});
-          }
+             this.setState({eReduction: Number.parseFloat(percentE).toFixed(3)});
+          } 
         })
        
     } 
