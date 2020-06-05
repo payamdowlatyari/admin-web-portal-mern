@@ -21,7 +21,7 @@ export default class EnergyDemand extends PureComponent {
   };
   
   componentDidMount() {
-    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
 
     let tmpnum = 0;
@@ -53,11 +53,11 @@ export default class EnergyDemand extends PureComponent {
        this.setState({ data: tempList.reverse() });
         
       });
-    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=infoHistory")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=infoHistory")
       .then(res => {
         this.setState({ info: res.data.result });
       });
-    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=electricityCostSummary")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=electricityCostSummary")
       .then(res => {
         let tmpTotal = 0;
         for(let i = 0; i < res.data.result.length; i++) {

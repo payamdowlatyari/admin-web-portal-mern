@@ -13,7 +13,7 @@ export default class totUChart extends PureComponent {
   }
 
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=chargerCount")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
         this.setState({ data: res.data.result });
       })

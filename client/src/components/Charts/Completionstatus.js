@@ -20,7 +20,7 @@ export default class Completionstatus extends PureComponent {
   };
 
   // componentDidMount() {
-  //   axios.get("https://api.calplug.club/api.php?collection=webUsers")
+  //   axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=webUsers")
   //     .then(res => {
   //       let o = 0;
   //       let p = 0;
@@ -42,12 +42,12 @@ export default class Completionstatus extends PureComponent {
   //     });
   // }
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=completionStatus")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
       .then(res => {
         this.setState({ data: res.data.result });
       })
 
-      axios.get("https://api.calplug.club/api.php?collection=completionStatus")
+      axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
       .then(res => {
         let today = "";
         

@@ -13,7 +13,7 @@ export default class Example extends PureComponent {
   }
 
   componentDidMount() {
-    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
         
         
