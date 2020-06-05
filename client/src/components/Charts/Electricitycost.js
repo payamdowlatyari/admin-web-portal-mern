@@ -19,12 +19,12 @@ export default class Example extends PureComponent {
   };
 
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=electricityCostSummary")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=electricityCostSummary")
       .then(res => {
         this.setState({ data: res.data.result });
       })
 
-    axios.get("https://api.calplug.club/api.php?collection=infoHistory")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=infoHistory")
     .then(res => {
       this.setState({ cost: res.data.result });
     })
