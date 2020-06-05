@@ -38,6 +38,7 @@ export default class Carbons extends PureComponent {
 
   componentDidMount() {
     axios.get("https://api.calplug.club/api.php?collection=emissions")
+    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=emissions")
       .then(res => {
         this.setState({ data: res.data.result });
       })

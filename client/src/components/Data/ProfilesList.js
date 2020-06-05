@@ -40,7 +40,7 @@ export default class ProfilesList extends Component {
   //     })
 
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=userprofiles")
+    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles")
       .then(res => {
         console.log(res.data)
         this.setState({ profiles: res.data.result })

@@ -22,7 +22,7 @@ class CardOpt extends Component{
   };    
 
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=chargerCount")
+    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
         let tmpDemand = 0;
 
@@ -37,7 +37,7 @@ class CardOpt extends Component{
         
       })
     
-        axios.get("https://api.calplug.club/api.php?collection=emissions")
+        axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=emissions")
            .then(res => {
             let tmpHour = "";
             //console.log(this.res.data.result)
@@ -81,7 +81,7 @@ class CardOpt extends Component{
         
            })
 
-        axios.get("https://api.calplug.club/api.php?collection=emissionHistory")
+        axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=emissionHistory")
         .then(res => {
           let today = "";
           let tmpcur = 0;
