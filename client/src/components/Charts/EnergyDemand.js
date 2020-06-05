@@ -21,7 +21,7 @@ export default class EnergyDemand extends PureComponent {
   };
   
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=chargerCount")
+    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
 
     let tmpnum = 0;
@@ -53,11 +53,11 @@ export default class EnergyDemand extends PureComponent {
        this.setState({ data: tempList.reverse() });
         
       });
-    axios.get("https://api.calplug.club/api.php?collection=infoHistory")
+    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=infoHistory")
       .then(res => {
         this.setState({ info: res.data.result });
       });
-    axios.get("https://api.calplug.club/api.php?collection=electricityCostSummary")
+    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=electricityCostSummary")
       .then(res => {
         let tmpTotal = 0;
         for(let i = 0; i < res.data.result.length; i++) {
@@ -144,29 +144,29 @@ export default class EnergyDemand extends PureComponent {
           <tbody>
             <tr>
               <td>1</td>
-              <td>Los Angeles</td>
+              <td>90210</td>
               <td>5400 MW</td>
             </tr>
             <tr>
               <td>2</td>
-              <td>San Francisco</td>
+              <td>94022</td>
               <td> 5200 MW</td>
             </tr>
             <tr>
               <td>3</td>
-              <td>Palo Alto</td>
+              <td>94028</td>
               <td> 4800 MW</td>
             </tr>
               
             <tr>
               <td>4</td>
-              <td>San Diego</td>
+              <td>92102</td>
               <td> 4500 MW</td>
             </tr>
 
             <tr>
               <td>5</td>
-              <td>Sacramento</td>
+              <td>95618</td>
               <td> 4200 MW</td>
             </tr>
           </tbody>
