@@ -1,8 +1,29 @@
 .card-deck {
-    margin-top: 100px;
-    width: 100%;
-  }
-  
-  .card {
-    border: transparent;
-  }
+  margin-top: 100px;
+  width: 100%;
+}
+
+/* .card {
+  border: transparent;
+} */
+
+.col-md-3 .root {
+  min-width: 200;
+  max-height: 180;
+  width: 15rem;
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  box-shadow: 2px 2px 10px #ccc !important;
+}
+.col-md-3 .bullet {
+  display: inline-block;
+  margin: 0 2px;
+  transform: scale(0.8);
+}
+.col-md-3 .title {
+  font-size: 20;
+  height: 95px;
+}
+.col-md-3 .pos {
+  margin-bottom: 12;
+}
