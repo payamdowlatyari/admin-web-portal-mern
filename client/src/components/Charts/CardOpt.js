@@ -75,13 +75,16 @@ class CardOpt extends Component{
         for(let i = 0; i < res.data.result.length; i++)
         {
             tmpHour = res.data.result[i].time;
-            if(curHour.replace(" ", "") === tmpHour.replace(" ", ""))
+            if(curHour.replace(" ", "") === tmpHour.replace(" ", "")) {
+              console.log(res.data.result[i]);
               this.setState({ emission: res.data.result[i] });
+
+            }
         }
         
            })
 
-        axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=emissionHistory")
+        axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=dailyCarbonEmission")
         .then(res => {
           let today = "";
           let tmpcur = 0;
@@ -103,8 +106,8 @@ class CardOpt extends Component{
             today = res.data.result[i].date;
             if(today == curDate)
               {
-                tmpcur = res.data.result[i].emission;
-                tmpprev = res.data.result[i - 1].emission;
+                tmpcur = res.data.result[i].dailyemission;
+                tmpprev = res.data.result[i - 1].dailyemission;
               }  
           }
           percentE = tmpcur/tmpprev;

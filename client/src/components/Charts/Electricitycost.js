@@ -19,7 +19,7 @@ export default class Example extends PureComponent {
   };
 
   componentDidMount() {
-    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=electricityCostSummary")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=dailyUserElectricityCost")
       .then(res => {
         this.setState({ data: res.data.result });
       })
@@ -50,8 +50,8 @@ export default class Example extends PureComponent {
               <YAxis label={{ value: 'Weekly Cost', angle: -90, position: 'insideLeft', offset: -5}} />
               <Tooltip />
               <Legend />
-              <Bar dataKey="activeUser" fill="#8884d8" />
-              <Bar dataKey="totalUser" fill="#82ca9d" />
+              <Bar dataKey="activeU_Cost" fill="#8884d8" />
+              <Bar dataKey="totalU_Cost" fill="#82ca9d" />
             </BarChart>
         </Col>
 

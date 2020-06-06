@@ -40,7 +40,7 @@ export default class ProfilesList extends Component {
   //     })
 
   componentDidMount() {
-    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles")
       .then(res => {
         console.log(res.data)
         this.setState({ profiles: res.data.result })
@@ -50,14 +50,14 @@ export default class ProfilesList extends Component {
       })
   }
 
-  // deleteProfile(id) {
-  //   axios.delete("https://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles" + id)
-  //     .then(response => { console.log(response.data) });
+  deleteProfile(id) {
+    axios.post("https://cpmqtt1.calit2.uci.edu/delete.php", "collection=userprofiles&_id=" + id)
+      .then(response => { console.log(response.data) });
 
-  //   this.setState({
-  //     profiles: this.state.profiles.filter(el => el._id !== id)
-  //   })
-  // }
+    this.setState({
+      profiles: this.state.profiles.filter(el => el._id !== id)
+    })
+  }
 
   profileList() {
     return this.state.profiles.map(currentprofile => {
