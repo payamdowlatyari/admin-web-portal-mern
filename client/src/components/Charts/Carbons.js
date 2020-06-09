@@ -44,65 +44,65 @@ export default class Carbons extends PureComponent {
   }
   render() {
     return (
-    <Container>
-     
-      <Row>
-            <br></br>
-            <span class="block-example border border-dark">
-              <LineChart
-                  width={1000}
-                  height={300}
-                  data={this.state.data}
-                  syncId="carbon"
-                  margin={{
-                  top: 20, right: 50, left: 20, bottom: 5,
-                  }}
-              >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="time" />
-                  <YAxis label={{ value: 'mTCO2', angle: -90, offset:-5 , position:'insideLeft'}} />
-                  <Tooltip />
-                  <Legend />
-                  <ReferenceLine y={9800} label="Max" stroke="red" />
-                  <Line type="monotone" dataKey="activeUser" stroke="#8884d8" />
-                  <Line type="monotone" dataKey="totalUser" stroke="#82ca9d" />
-                  <Brush/>   
-              </LineChart>
-              </span>
-        </Row>
-              <br></br>
-              <h5 style = {{ textALign: "middle" }}> Carbon Deferral</h5> 
-             
-              <br></br>
-              <span class="block-example border border-dark"></span>
-              <br></br>
+      <Container>
+
         <Row>
-         <span class="block-example border border-dark">
-            <br></br>
-            
+          <br></br>
+          <span class="block-example border border-dark">
             <LineChart
-                width={1000}
-                height={300}
-                data={this.state.data}
-                syncId="carbon"
-                margin={{
-                top: 5, right: 30, left: 20, bottom: 5, 
-                }}
+              width={1000}
+              height={300}
+              data={this.state.data}
+              syncId="carbon"
+              margin={{
+                top: 20, right: 50, left: 20, bottom: 5,
+              }}
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" />
-                <YAxis label={{ value: 'mTCO2', angle: -90, offset: -5 , position:'insideLeft'}} />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="curDef" stroke="#8884d8" dot={<CustomizedDot />} />
-                <Line type="monotone" dataKey="preDef" stroke="#82ca9d" />
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis label={{ value: 'mTCO2', angle: -90, offset: -5, position: 'insideLeft' }} />
+              <Tooltip />
+              <Legend />
+              <ReferenceLine y={9800} label="Max" stroke="red" />
+              <Line type="monotone" dataKey="activeUser" stroke="#8884d8" />
+              <Line type="monotone" dataKey="totalUser" stroke="#82ca9d" />
+              <Brush />
             </LineChart>
-           
-       
-         </span>
-      </Row>
-      
-    </Container>
+          </span>
+        </Row>
+        <br></br>
+        <h5 style={{ textALign: "middle" }}> Carbon Deferral</h5>
+
+        <br></br>
+        <span class="block-example border border-dark"></span>
+        <br></br>
+        <Row>
+          <span class="block-example border border-dark">
+            <br></br>
+
+            <LineChart
+              width={1000}
+              height={300}
+              data={this.state.data}
+              syncId="carbon"
+              margin={{
+                top: 5, right: 30, left: 20, bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis label={{ value: 'mTCO2', angle: -90, offset: -5, position: 'insideLeft' }} />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="curDef" stroke="#8884d8" dot={<CustomizedDot />} />
+              <Line type="monotone" dataKey="preDef" stroke="#82ca9d" />
+            </LineChart>
+
+
+          </span>
+        </Row>
+
+      </Container>
     );
   }
 }
