@@ -169,6 +169,8 @@ export default class EditProfile extends Component {
               <div className="form-group">
                 <label>Username: </label>
                 <select ref="userInput"
+                  disabled="disabled"
+
                   required
                   className="form-control"
                   value={this.state.username}

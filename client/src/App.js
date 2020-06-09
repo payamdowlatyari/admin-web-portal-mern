@@ -24,7 +24,7 @@ import CreateProfile from './components/Data/CreateProfile';
 import EditProfile from './components/Data/EditProfile';
 import CreateAdmin from './components/Data/CreateAdmin';
 import EditAdmin from './components/Data/EditAdmin';
-
+import EditMobileProfile from './components/Data/EditMobileProfile';
 import Navbar from "./components/layout/Navbar";
 import './App.css';
 import Footbar from "./components/Footbar/Footbar";
@@ -77,6 +77,7 @@ class App extends Component {
                   <PrivateRoute exact path="/CreateUser" component={CreateUser} />
                   <PrivateRoute exact path="/CreateAdmin" component={CreateAdmin} />
                   <PrivateRoute exact path="/EditAdmin/:id" component={EditAdmin} />
+                  <PrivateRoute exact path="/EditMobileProfile/:id" component={EditMobileProfile} />
 
 
                 </Switch>

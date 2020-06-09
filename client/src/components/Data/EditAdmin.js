@@ -95,6 +95,7 @@ export default class EditAdmin extends Component {
                             <div className="form-group">
                                 <label>Name: </label>
                                 <input type="text"
+                                    disabled="disabled"
                                     required
                                     className="form-control"
                                     value={this.state.name}
