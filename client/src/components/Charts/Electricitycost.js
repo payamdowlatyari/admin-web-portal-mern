@@ -25,9 +25,9 @@ export default class Example extends PureComponent {
       })
 
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=infoHistory")
-    .then(res => {
-      this.setState({ cost: res.data.result });
-    })
+      .then(res => {
+        this.setState({ cost: res.data.result });
+      })
   }
 
   render() {
@@ -35,8 +35,8 @@ export default class Example extends PureComponent {
 
       <Container fluid>
         <br></br>
-      <Row>
-        <Col md="8">
+        <Row>
+          <Col md="8">
             <BarChart
               width={700}
               height={300}
@@ -47,35 +47,35 @@ export default class Example extends PureComponent {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="Date" />
-              <YAxis label={{ value: 'Weekly Cost', angle: -90, position: 'insideLeft', offset: -5}} />
+              <YAxis label={{ value: 'Weekly Cost', angle: -90, position: 'insideLeft', offset: -5 }} />
               <Tooltip />
               <Legend />
-              <Bar dataKey="activeUser" fill="#8884d8" />
-              <Bar dataKey="totalUser" fill="#82ca9d" />
+              {/* <Bar dataKey="activeUser" fill="#8884d8" /> */}
+              {/* <Bar dataKey="totalUser" fill="#82ca9d" /> */}
             </BarChart>
-        </Col>
+          </Col>
 
-        <Col md="4">
-        
+          <Col md="4">
+
             <Table className="mb-0" bordered>
-            <thead>
-              <tr>
-               
-                <th>Time Period</th>
-                <th>High</th>
-                <th>Low</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.cost.map(cost => <tr key={cost.date}>
-                <td> {cost.date} </td>
-                <td> {cost.highestcost} </td>
-                <td> {cost.lowestcost} </td>
-              </tr>)}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
+              <thead>
+                <tr>
+
+                  <th>Time Period</th>
+                  <th>High</th>
+                  <th>Low</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.cost.map(cost => <tr key={cost.date}>
+                  <td> {cost.date} </td>
+                  <td> {cost.highestcost} </td>
+                  <td> {cost.lowestcost} </td>
+                </tr>)}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
       </Container>
     );
   }
