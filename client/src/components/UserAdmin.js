@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProfilesList from './Data/ProfilesList';
 import AdminsList from './Data/AdminsList';
+import MobileProfilesList from './Data/MobileProfilesList';
 
 import Container from 'react-bootstrap/Container';
 
@@ -21,8 +22,14 @@ class UserAdmin extends Component {
                         <br></br>
                         <br></br>
                         <Col>
+                            <MobileProfilesList />
+                        </Col>
+                        <br></br>
+                        <br></br>
+                        <Col>
                             <AdminsList />
                         </Col>
+
                     </Row>
                 </div>
             </Container>
