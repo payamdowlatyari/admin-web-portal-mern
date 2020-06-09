@@ -12,8 +12,8 @@ const Profile = props => (
     <td>{props.profile.environment}</td>
     <td>{props.profile.location}</td>
     <td>{props.profile.provider}</td>
-    <td>{props.profile.start}</td>
-    <td>{props.profile.end}</td>
+    <td>{props.profile.start.substring(0, 10)}</td>
+    <td>{props.profile.end.substring(0, 10)}</td>
     <td>
       <Link to={"/EditProfile/" + props.profile._id}>edit</Link> | <Link href="#" onClick={() => { props.deleteProfile(props.profile._id) }}>delete</Link>
     </td>
@@ -24,26 +24,15 @@ export default class ProfilesList extends Component {
   constructor(props) {
     super(props);
 
-    // this.deleteProfile = this.deleteProfile.bind(this)
+    this.deleteProfile = this.deleteProfile.bind(this)
 
     this.state = { profiles: [] };
   }
 
-  // state = {
-  //   profiles: []
-  // }
-
-  // componentDidMount() {
-  //   axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles")
-  //     .then(res => {
-  //       this.setState({ data: res.data.result });
-  //     })
-
   componentDidMount() {
-    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles")
-      .then(res => {
-        console.log(res.data)
-        this.setState({ profiles: res.data.result })
+    axios.get('/api/profiles/')
+      .then(response => {
+        this.setState({ profiles: response.data })
       })
       .catch((error) => {
         console.log(error);
@@ -51,7 +40,7 @@ export default class ProfilesList extends Component {
   }
 
   deleteProfile(id) {
-    axios.post("https://cpmqtt1.calit2.uci.edu/delete.php", "collection=userprofiles&_id=" + id)
+    axios.delete('/api/profiles/' + id)
       .then(response => { console.log(response.data) });
 
     this.setState({
@@ -61,7 +50,7 @@ export default class ProfilesList extends Component {
 
   profileList() {
     return this.state.profiles.map(currentprofile => {
-      return <Profile profile={currentprofile} deleteProfile={this.deleteProfile} key={currentprofile.username} />;
+      return <Profile profile={currentprofile} deleteProfile={this.deleteProfile} key={currentprofile._id} />;
     })
   }
 
@@ -85,7 +74,7 @@ export default class ProfilesList extends Component {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody className="thead-light">
+          <tbody lassName="thead-light">
             {this.profileList()}
           </tbody>
         </table>
