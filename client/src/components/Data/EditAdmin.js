@@ -124,6 +124,15 @@ export default class EditAdmin extends Component {
                                     onChange={this.onChangePassword}
                                 />
                             </div>
+                            <div className="form-group">
+                                <label>Date: </label>
+                                <div>
+                                    <DatePicker
+                                        selected={this.state.date}
+                                        onChange={this.onChangeDate}
+                                    />
+                                </div>
+                            </div>
 
                         </Col>
                     </Row>

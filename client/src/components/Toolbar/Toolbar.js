@@ -1,7 +1,5 @@
 import React from 'react';
 import './Toolbar.css';
-import Navbar from '../../components/layout/Navbar';
-import Footbar from '../../components/Footbar/Footbar';
 import Sidebar from "react-sidebar";
 import Container from 'react-bootstrap/Container';
 import { NavLink } from 'react-router-dom';
@@ -9,7 +7,6 @@ import { FaChartPie, FaChartBar, FaUser } from 'react-icons/fa';
 import { MdContactMail } from "react-icons/md";
 import { AiTwotoneSetting } from "react-icons/ai";
 import { IoMdAnalytics } from "react-icons/io";
-import ZIndex from 'react-z-index';
 
 class Toolbar extends React.Component {
   constructor(props) {

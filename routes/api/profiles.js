@@ -15,8 +15,7 @@ router.route('/add').post((req, res) => {
   const cost = Number(req.body.cost);
   const society = Number(req.body.society);
   const environment = Number(req.body.environment);
-  const device = req.body.device;
-  const location = req.body.location;
+  const location = Number(req.body.location);
   const provider = req.body.provider;
   const start = Date.parse(req.body.start);
   const end = Date.parse(req.body.end);
@@ -28,7 +27,6 @@ router.route('/add').post((req, res) => {
     cost,
     society,
     environment,
-    device,
     location,
     provider,
     start,
@@ -61,8 +59,7 @@ router.route('/update/:id').post((req, res) => {
       profile.cost = Number(req.body.cost);
       profile.society = Number(req.body.society);
       profile.environment = Number(req.body.environment);
-      profile.device = req.body.device;
-      profile.location = req.body.location;
+      profile.location = Number(req.body.location);
       profile.provider = req.body.provider;
       profile.start = Date.parse(req.body.start);
       profile.end = Date.parse(req.body.end)

@@ -5,8 +5,7 @@ import {
   CardBody,
   CardTitle,
   Row,
-  Col,
-  Progress
+  Col
 } from "reactstrap";
 import Container from "react-bootstrap/Container";
 import Jumbotron from 'react-bootstrap/Jumbotron';

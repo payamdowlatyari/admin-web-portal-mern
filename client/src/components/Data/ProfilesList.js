@@ -10,11 +10,10 @@ const Profile = props => (
     <td>{props.profile.cost}</td>
     <td>{props.profile.society}</td>
     <td>{props.profile.environment}</td>
-    <td>{props.profile.device}</td>
     <td>{props.profile.location}</td>
     <td>{props.profile.provider}</td>
-    <td>{props.profile.start.substring(0, 10)}</td>
-    <td>{props.profile.end.substring(0, 10)}</td>
+    <td>{props.profile.start}</td>
+    <td>{props.profile.end}</td>
     <td>
       <Link to={"/EditProfile/" + props.profile._id}>edit</Link> | <Link href="#" onClick={() => { props.deleteProfile(props.profile._id) }}>delete</Link>
     </td>
@@ -68,7 +67,6 @@ export default class ProfilesList extends Component {
               <th>Cost</th>
               <th>Soc.</th>
               <th>Env.</th>
-              <th>Device</th>
               <th>Location</th>
               <th>Provider</th>
               <th>Start</th>

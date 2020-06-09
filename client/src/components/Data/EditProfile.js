@@ -16,7 +16,6 @@ export default class EditProfile extends Component {
     this.onChangeCost = this.onChangeCost.bind(this);
     this.onChangeSociety = this.onChangeSociety.bind(this);
     this.onChangeEnvironment = this.onChangeEnvironment.bind(this);
-    this.onChangeDevice = this.onChangeDevice.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onChangeProvider = this.onChangeProvider.bind(this);
     this.onChangeStart = this.onChangeStart.bind(this);
@@ -31,8 +30,7 @@ export default class EditProfile extends Component {
       cost: 0,
       society: 0,
       environment: 0,
-      device: '',
-      location: '',
+      location: 0,
       provider: '',
       start: new Date(),
       end: new Date(),
@@ -50,7 +48,6 @@ export default class EditProfile extends Component {
           cost: response.data.cost,
           society: response.data.society,
           environment: response.data.environment,
-          device: response.data.device,
           location: response.data.location,
           provider: response.data.provider,
           start: new Date(response.data.start),
@@ -111,12 +108,6 @@ export default class EditProfile extends Component {
     })
   }
 
-  onChangeDevice(e) {
-    this.setState({
-      device: e.target.value
-    })
-  }
-
   onChangeLocation(e) {
     this.setState({
       location: e.target.value
@@ -149,7 +140,6 @@ export default class EditProfile extends Component {
       cost: this.state.cost,
       society: this.state.society,
       environment: this.state.environment,
-      device: this.state.device,
       location: this.state.location,
       provider: this.state.provider,
       start: this.state.start,
@@ -255,13 +245,7 @@ export default class EditProfile extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>Device: </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={this.state.device}
-                  onChange={this.onChangeDevice}
-                />
+
                 <div className="form-group">
                   <label>Location: </label>
                   <input

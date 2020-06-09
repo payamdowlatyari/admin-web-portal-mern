@@ -6,8 +6,6 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 const usersRouter = require('./routes/api/usernames');
 const profilesRouter = require('./routes/api/profiles');
-const preferenceRouter = require('./routes/api/preferences');
-const userTypesRouter = require('./routes/api/userTypes');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -41,10 +39,6 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use('/api/usernames', usersRouter);
 app.use('/api/profiles', profilesRouter);
-app.use('/api/preferences', preferenceRouter);
-app.use('/api/userTypes', userTypesRouter);
-
-
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
