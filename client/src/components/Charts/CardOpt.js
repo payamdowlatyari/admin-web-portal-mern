@@ -18,11 +18,12 @@ class CardOpt extends Component{
 
   state = {
    demand: 0,
+   abandon: 0,
    emission:[]
-  };    
+  };
 
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=chargerCount")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
         let tmpDemand = 0;
 
@@ -34,10 +35,25 @@ class CardOpt extends Component{
         tmpDemand = Math.ceil(tmpDemand / 24);
         this.setState({ demand: tmpDemand });
 
+
+      })
+
+      axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
+      .then(res => {
+        let tmpAbandon = 0;
+
+
+        for(let i = 0; i < res.data.result.length; i++)
+        {
+            tmpAbandon += res.data.result[i].abandonedChargers;
+        }
+        tmpAbandon = Math.ceil(tmpAbandon / 24);
+        this.setState({ abandon: tmpAbandon });
+
         
       })
-    
-        axios.get("https://api.calplug.club/api.php?collection=emissions")
+
+        axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=emissions")
            .then(res => {
             let tmpHour = "";
             //console.log(this.res.data.result)
@@ -67,21 +83,23 @@ class CardOpt extends Component{
         hour[21] = "9 pm";
         hour[22] = "10 pm";
         hour[23] = "11 pm";
-        
+
         let curHour = hour[d.getHours()]
-        
+
         //console.log(typeof curHour);
-        
+
         for(let i = 0; i < res.data.result.length; i++)
         {
             tmpHour = res.data.result[i].time;
-            if(curHour.replace(" ", "") === tmpHour.replace(" ", ""))
+            if(curHour.replace(" ", "") === tmpHour.replace(" ", "")) {
               this.setState({ emission: res.data.result[i] });
+              
+            }
         }
-        
+
            })
 
-        axios.get("https://api.calplug.club/api.php?collection=emissionHistory")
+        axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=dailyCarbonEmission")
         .then(res => {
           let today = "";
           let tmpcur = 0;
@@ -96,46 +114,50 @@ class CardOpt extends Component{
           weekday[4] = "Thursday";
           weekday[5] = "Friday";
           weekday[6] = "Saturday";
-  
           let curDate = weekday[d.getDay()]
           for(let i = 0; i < res.data.result.length; i++)
           {
+           
             today = res.data.result[i].date;
             if(today == curDate)
               {
+                console.log("if")
                 tmpcur = res.data.result[i].emission;
-                tmpprev = res.data.result[i - 1].emission;
-              }  
+                if(i == 0)
+                  tmpprev = res.data.result[6].emission;
+                else
+                  tmpprev = res.data.result[i - 1].emission;
+              }
           }
           percentE = tmpcur/tmpprev;
 
           if(tmpprev > tmpcur)
           {
-           this.setState({ eReduction: percentE});
+           this.setState({ eReduction: Number.parseFloat(percentE).toFixed(3)});
           }
-          else 
+          else
           {
              percentE = 1 - percentE;
              this.setState({eReduction: Number.parseFloat(percentE).toFixed(3)});
-          } 
+          }
         })
-       
-    } 
-     
+
+    }
+
   render(){
 
   return (
     <Container>
     <Row>
      <Col md="3">
-     
+
         <Card className="root" border="danger">
         <CardContent>
             <Typography className="title" variant="h5" component="h2" gutterBottom>
             Rate of Demand for Chargers
             </Typography>
             <Typography variant="h5" component="h2">
-            125K
+            {this.state.demand}
             </Typography>
             <Typography className="pos" color="textSecondary">
             demanded per hour
@@ -155,7 +177,7 @@ class CardOpt extends Component{
            Avg rate of Abandoned Chargers
         </Typography>
         <Typography variant="h5" component="h2">
-            {this.state.demand} 
+            {this.state.abandon}
         </Typography>
         <Typography className="pos" color="textSecondary">
             per hour
@@ -211,13 +233,6 @@ class CardOpt extends Component{
 
     );
    }
-  
-    getBorder() {
-      let borders = "primary";
-      this.state.demCharger = this.state.demCharger - this.state.predemCharger;
-      borders += (this.state.demCharger >= 0) ? "success" : "danger";
-      return borders;
-    }
 }
 
 

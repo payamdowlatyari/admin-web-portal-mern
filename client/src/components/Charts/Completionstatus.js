@@ -18,39 +18,16 @@ export default class Completionstatus extends PureComponent {
     eReduction: 0,
 
   };
-
-  // componentDidMount() {
-  //   axios.get("https://api.calplug.club/api.php?collection=webUsers")
-  //     .then(res => {
-  //       let o = 0;
-  //       let p = 0;
-  //       let l = 0;
-  //       for(let i = 0; i < res.data.result.length; i++) {
-  //         if(res.data.result[i].status == "Premature")
-  //           p++;
-  //         else if (res.data.result[i].status == "Ontime")
-  //           o++;
-  //         else 
-  //           l++;
-  //       }
-  //       this.setState({ 
-  //         data: res.data.result,
-  //         pCount: p,
-  //         oCount: o,
-  //         lCount: l
-  //       });
-  //     });
-  // }
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=completionStatus")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
       .then(res => {
         this.setState({ data: res.data.result });
       })
 
-      axios.get("https://api.calplug.club/api.php?collection=completionStatus")
+      axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
       .then(res => {
         let today = "";
-        
+
         var d = new Date();
         var weekday = new Array(7);
         weekday[0] = "Sunday";
@@ -65,7 +42,7 @@ export default class Completionstatus extends PureComponent {
         for(let i = 0; i < res.data.result.length; i++)
         {
           today = res.data.result[i].Date;
-          if(today == curDate)
+          if(today === curDate)
             this.setState({ list: res.data.result[i] });
         }
       })
@@ -77,49 +54,49 @@ export default class Completionstatus extends PureComponent {
   <Container>
    <br></br>
     <Row>
-     
-      
+
+
      <Col md="4">
-         
+
           <Table className="mb-0" bordered>
             <thead>
               <tr>
-               
+
                 <th>Completion status </th>
                 <th>Charger Count</th>
-  
+
               </tr>
             </thead>
-         
+
             <tbody>
-              <tr key={this.state.list.Date}>
-                
+              <tr>
+
                 <td>Premature</td>
                 <td> {this.state.list.Premature} </td>
               </tr>
-              <tr key={this.state.list.Date}>
-                
+              <tr>
+
                 <td>Ontime</td>
                 <td> {this.state.list.Ontime} </td>
               </tr>
-              <tr key={this.state.list.Date}>
-                
+              <tr>
+
                 <td>Late</td>
                 <td> {this.state.list.Late} </td>
               </tr>
 
-              <tr key={this.state.list.Date}>
+              <tr>
                 <td>Total</td>
                 <td> {this.state.list.Total} </td>
               </tr>
-          
+
             </tbody>
           </Table>
-         
+
       </Col>
 
       <Col md="8">
-        
+
         <BarChart
           width={700}
           height={300}
@@ -137,11 +114,11 @@ export default class Completionstatus extends PureComponent {
           <Bar dataKey="Ontime" stackId="a" fill="#82ca9d" />
           <Bar dataKey="Late" stackId="a" fill="#81rd5w" />
         </BarChart>
-      
+
       </Col>
-    
+
     </Row>
-   
+
   </Container>
     );
   }

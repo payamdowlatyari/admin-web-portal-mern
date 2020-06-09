@@ -5,8 +5,7 @@ import {
   CardBody,
   CardTitle,
   Row,
-  Col,
-  Progress
+  Col
 } from "reactstrap";
 import Container from "react-bootstrap/Container";
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -19,7 +18,7 @@ import {
 import axios from "axios";
 
 class StatsCard extends React.Component {
-  
+
   state = {
     total: 0,
     active: 0,
@@ -30,7 +29,7 @@ class StatsCard extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("https://api.calplug.club/api.php?collection=chargerCount")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
         let tUser = 0;
         let qUser = 0;
@@ -41,18 +40,18 @@ class StatsCard extends React.Component {
 
         for(let i = 0; i < res.data.result.length; i++)
         {
-          
-          
+
+
             tUser += res.data.result[i].totalChargers;
             qUser += res.data.result[i].queuedChargers;
             aUser += res.data.result[i].activeChargers;
             iUser += res.data.result[i].idleChargers;
             dUser += res.data.result[i].disconnectedChargers;
             abUser += res.data.result[i].abandonedChargers;
-          
-    
-          
-         
+
+
+
+
         }
         this.setState({ total: tUser });
         this.setState({ queued: qUser });
@@ -62,12 +61,12 @@ class StatsCard extends React.Component {
         this.setState({ abandoned: abUser });
       });
   }
-  
+
   render() {
     return (
       <>
         <Container>
-          
+
           <Row>
             <Col>
             <Card className="card-stats mb-4 mb-lg-0">
@@ -155,10 +154,10 @@ class StatsCard extends React.Component {
               </p>
             </CardBody>
           </Card>
-            </Col>  
-      
+            </Col>
+
           </Row>
-        
+
 
           <Jumbotron className="jumbo">
           <Row>
@@ -255,7 +254,7 @@ class StatsCard extends React.Component {
             </CardBody>
           </Card>
             </Col>
-         
+
           </Row>
           <br></br>
           {/* <Progress multi>
@@ -267,8 +266,8 @@ class StatsCard extends React.Component {
 
           </Jumbotron>
 
-          
-          
+
+
         </Container>
       </>
     );
