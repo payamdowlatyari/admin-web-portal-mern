@@ -4,7 +4,6 @@ import {
 } from 'recharts';
 import axios from "axios";
 
-
 export default class totUChart extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
@@ -16,6 +15,7 @@ export default class totUChart extends PureComponent {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
         this.setState({ data: res.data.result });
+        console.log(this.state.data);
       })
   }
 

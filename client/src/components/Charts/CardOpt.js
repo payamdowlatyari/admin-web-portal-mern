@@ -3,7 +3,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from "react-bootstrap/Container";
 import Card from 'react-bootstrap/Card';
-//import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -101,7 +100,7 @@ class CardOpt extends Component {
         let curDate = weekday[d.getDay()]
         for (let i = 0; i < res.data.result.length; i++) {
           today = res.data.result[i].date;
-          if (today == curDate) {
+          if (today === curDate) {
             tmpcur = res.data.result[i].dailyemission;
             tmpprev = res.data.result[i - 1].dailyemission;
           }
@@ -211,7 +210,8 @@ class CardOpt extends Component {
 
   getBorder() {
     let borders = "primary";
-    this.state.demCharger = this.state.demCharger - this.state.predemCharger;
+    this.setState({ demCharger: this.state.demCharger - this.state.predemCharger });
+    //this.state.demCharger = this.state.demCharger - this.state.predemCharger;
     borders += (this.state.demCharger >= 0) ? "success" : "danger";
     return borders;
   }

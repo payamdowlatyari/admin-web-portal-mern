@@ -64,7 +64,7 @@ export default class Completionstatus extends PureComponent {
         let curDate = weekday[d.getDay()]
         for (let i = 0; i < res.data.result.length; i++) {
           today = res.data.result[i].Date;
-          if (today == curDate)
+          if (today === curDate)
             this.setState({ list: res.data.result[i] });
         }
       })

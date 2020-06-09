@@ -12,6 +12,51 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
 
+router.route('/').get((req, res) => {
+  User.find()
+    .then(admins => res.json(admins))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/add').post((req, res) => {
+
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+  const date = Date.parse(req.body.date);
+
+  const newAdmin = new User({
+    name,
+    email,
+    password,
+    date
+  });
+
+  newAdmin.save()
+    .then(() => res.json('Admin added!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').delete((req, res) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Admin deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+  User.findById(req.params.id)
+    .then(admin => {
+      admin.name = req.body.name;
+      admin.email = req.body.email;
+      admin.password = req.body.password;
+      admin.date = Date.parse(req.body.date)
+      admin.save()
+        .then(() => res.json('Admin updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 // @route POST api/users/register
 // @desc Register user
 // @access Public

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
 import Container from "react-bootstrap/Container";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, Brush

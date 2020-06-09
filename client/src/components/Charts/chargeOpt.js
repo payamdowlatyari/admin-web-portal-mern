@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import axios from "axios";
 
@@ -34,7 +34,7 @@ export default class Example extends PureComponent {
                 break;
               }
             }
-            if (i == 0) i = 24;
+            if (i === 0) i = 24;
             count--;
           } else {
             break;

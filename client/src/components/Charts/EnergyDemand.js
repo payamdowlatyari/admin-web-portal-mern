@@ -42,7 +42,7 @@ export default class EnergyDemand extends PureComponent {
                 break;
               }
             }
-            if (i == 0) i = 24;
+            if (i === 0) i = 24;
             count--;
           } else {
             break;
