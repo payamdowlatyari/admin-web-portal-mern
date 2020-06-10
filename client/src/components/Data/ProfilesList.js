@@ -10,10 +10,10 @@ const Profile = props => (
     <td>{props.profile.cost}</td>
     <td>{props.profile.society}</td>
     <td>{props.profile.environment}</td>
-    <td>{props.profile.zip}</td>
-    <td>{props.profile.electricalprovider}</td>
-    <td>{props.profile.starttime.substring(0, 10)}</td>
-    <td>{props.profile.endtime.substring(0, 10)}</td>
+    <td>{props.profile.location}</td>
+    <td>{props.profile.provider}</td>
+    <td>{props.profile.start.substring(0, 10)}</td>
+    <td>{props.profile.end.substring(0, 10)}</td>
     <td>
       <Link to={"/EditProfile/" + props.profile._id}>edit</Link> | <Link href="#" onClick={() => { props.deleteProfile(props.profile._id) }}>delete</Link>
     </td>
@@ -24,44 +24,33 @@ export default class ProfilesList extends Component {
   constructor(props) {
     super(props);
 
-    // this.deleteProfile = this.deleteProfile.bind(this)
+    this.deleteProfile = this.deleteProfile.bind(this)
 
     this.state = { profiles: [] };
   }
 
-  // state = {
-  //   profiles: []
-  // }
-
-  // componentDidMount() {
-  //   axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles")
-  //     .then(res => {
-  //       this.setState({ data: res.data.result });
-  //     })
-
   componentDidMount() {
-    axios.get("http://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles")
-      .then(res => {
-        console.log(res.data)
-        this.setState({ profiles: res.data.result })
+    axios.get('/api/profiles/')
+      .then(response => {
+        this.setState({ profiles: response.data })
       })
       .catch((error) => {
         console.log(error);
       })
   }
 
-  // deleteProfile(id) {
-  //   axios.delete("https://cpmqtt1.calit2.uci.edu/api.php?collection=userprofiles" + id)
-  //     .then(response => { console.log(response.data) });
+  deleteProfile(id) {
+    axios.delete('/api/profiles/' + id)
+      .then(response => { console.log(response.data) });
 
-  //   this.setState({
-  //     profiles: this.state.profiles.filter(el => el._id !== id)
-  //   })
-  // }
+    this.setState({
+      profiles: this.state.profiles.filter(el => el._id !== id)
+    })
+  }
 
   profileList() {
     return this.state.profiles.map(currentprofile => {
-      return <Profile profile={currentprofile} deleteProfile={this.deleteProfile} key={currentprofile.username} />;
+      return <Profile profile={currentprofile} deleteProfile={this.deleteProfile} key={currentprofile._id} />;
     })
   }
 
@@ -78,7 +67,7 @@ export default class ProfilesList extends Component {
               <th>Cost</th>
               <th>Soc.</th>
               <th>Env.</th>
-              <th>zip</th>
+              <th>Location</th>
               <th>Provider</th>
               <th>Start</th>
               <th>End</th>

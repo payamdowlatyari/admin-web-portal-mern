@@ -1,8 +1,11 @@
-
+.container{
+    z-index: auto;
+}
  .contact-form {
      margin: 0 auto;
      max-width: 50%;
      padding: 20px;
+     z-index: auto;
 }
  p {
      text-align: center;
@@ -17,4 +20,11 @@
      margin-top: 6px;
      margin-bottom: 16px;
      resize: vertical;
+     /* z-index: 100; */
 }
+
+.contact-form form{
+    position: relative;
+
+}
+

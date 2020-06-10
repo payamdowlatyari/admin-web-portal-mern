@@ -7,7 +7,7 @@ class Contact extends Component {
 
     render() {
         return (
-            <Container>
+            <Container >
                 <br></br>
                 <h1>Contact Us</h1>
                 <hr></hr>

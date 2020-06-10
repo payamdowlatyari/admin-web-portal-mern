@@ -4,20 +4,20 @@ import {
 } from 'recharts';
 import axios from "axios";
 
-
 export default class totUChart extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
   state = {
-      data: []
+    data: []
   }
 
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
         this.setState({ data: res.data.result });
+        console.log(this.state.data);
       })
-    }
+  }
 
   render() {
     return (
@@ -33,10 +33,10 @@ export default class totUChart extends PureComponent {
         <XAxis dataKey="Time" />
         <YAxis />
         <Tooltip />
-        <Legend/>
+        <Legend />
         <Area type="monotone" dataKey="activeChargers" stackId="1" stroke="#8884d8" fill="#8884d8" />
         <Area type="monotone" dataKey="queuedChargers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-      
+
         <br></br>
       </AreaChart>
     );

@@ -22,6 +22,9 @@ import Analytics from './components/Analytics';
 import CreateUser from './components/Data/CreateUser';
 import CreateProfile from './components/Data/CreateProfile';
 import EditProfile from './components/Data/EditProfile';
+import CreateAdmin from './components/Data/CreateAdmin';
+import EditAdmin from './components/Data/EditAdmin';
+import EditMobileProfile from './components/Data/EditMobileProfile';
 import Navbar from "./components/layout/Navbar";
 import './App.css';
 import Footbar from "./components/Footbar/Footbar";
@@ -56,23 +59,31 @@ class App extends Component {
             <div className="App">
               <Navbar />
               <Toolbar />
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute exact path='/Home' component={Home} />
-                <PrivateRoute exact path='/General' component={General} />
-                <PrivateRoute exact path='/Optimizer/' component={Optimizer} />
-                <PrivateRoute exact path='/UserAdmin/' component={UserAdmin} />
-                <PrivateRoute exact path='/Settings/' component={Settings} />
-                <PrivateRoute exact path='/Contact/' component={Contact} />
-                <PrivateRoute exact path='/Analytics/' component={Analytics} />
-                <PrivateRoute exact path="/EditProfile/:id" component={EditProfile} />
-                <PrivateRoute exact path="/CreateProfile" component={CreateProfile} />
-                <PrivateRoute exact path="/CreateUser" component={CreateUser} />
-              </Switch>
+              <div className="content">
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+                <Switch>
+                  <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                  <PrivateRoute exact path='/Home' component={Home} />
+                  <PrivateRoute exact path='/General' component={General} />
+                  <PrivateRoute exact path='/Optimizer/' component={Optimizer} />
+                  <PrivateRoute exact path='/UserAdmin/' component={UserAdmin} />
+                  <PrivateRoute exact path='/Settings/' component={Settings} />
+                  <PrivateRoute exact path='/Contact/' component={Contact} />
+                  <PrivateRoute exact path='/Analytics/' component={Analytics} />
+                  <PrivateRoute exact path="/EditProfile/:id" component={EditProfile} />
+                  <PrivateRoute exact path="/CreateProfile" component={CreateProfile} />
+                  <PrivateRoute exact path="/CreateUser" component={CreateUser} />
+                  <PrivateRoute exact path="/CreateAdmin" component={CreateAdmin} />
+                  <PrivateRoute exact path="/EditAdmin/:id" component={EditAdmin} />
+                  <PrivateRoute exact path="/EditMobileProfile/:id" component={EditMobileProfile} />
+
+
+                </Switch>
+              </div>
               <Footbar />
+
             </div>
 
           </Router>

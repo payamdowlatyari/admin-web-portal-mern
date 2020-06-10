@@ -1,7 +1,5 @@
 import React from 'react';
 import './Toolbar.css';
-import Navbar from '../../components/layout/Navbar';
-import Footbar from '../../components/Footbar/Footbar';
 import Sidebar from "react-sidebar";
 import Container from 'react-bootstrap/Container';
 import { NavLink } from 'react-router-dom';
@@ -9,7 +7,6 @@ import { FaChartPie, FaChartBar, FaUser } from 'react-icons/fa';
 import { MdContactMail } from "react-icons/md";
 import { AiTwotoneSetting } from "react-icons/ai";
 import { IoMdAnalytics } from "react-icons/io";
-import ZIndex from 'react-z-index';
 
 class Toolbar extends React.Component {
   constructor(props) {
@@ -49,7 +46,10 @@ class Toolbar extends React.Component {
                     <NavLink to="/UserAdmin"><FaUser /> User Administration</NavLink>
                   </div>
                   <div>
-                    <NavLink to="/CreateUser"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create User</NavLink>
+                    <NavLink to="/CreateAdmin"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register Admin</NavLink>
+                  </div>
+                  <div>
+                    <NavLink to="/CreateUser"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register User</NavLink>
                   </div>
                   <div>
                     <NavLink to="/CreateProfile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create Profile</NavLink>

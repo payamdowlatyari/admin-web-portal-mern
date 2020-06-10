@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import axios from "axios";
 
@@ -9,45 +9,43 @@ export default class Example extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
 
   state = {
-    data:[]
+    data: []
   }
 
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
-        
-        
+
+
         let tmpnum = 0;
-        var d = new Date();        
+        var d = new Date();
         let curHour = d.getHours();
         let count = 7;
         let tempList = [];
         console.log(curHour);
-        for(let i = curHour; i >= 0; i--)
-        {
-          
-          if(count > 0)
-          {
-            for(let j = 0; j < res.data.result.length; j++) {
+        for (let i = curHour; i >= 0; i--) {
+
+          if (count > 0) {
+            for (let j = 0; j < res.data.result.length; j++) {
               tmpnum = res.data.result[j].number;
-              if(tmpnum === i) {
+              if (tmpnum === i) {
                 tempList.push(res.data.result[j]);
                 console.log(res.data.result[j]);
                 break;
               }
             }
-            if(i == 0) i = 24;
+            if (i === 0) i = 24;
             count--;
           } else {
             break;
           }
         }
         this.setState({ data: tempList.reverse() });
-        
-       
+
+
       })
-    }
-   
+  }
+
   render() {
     return (
       <BarChart

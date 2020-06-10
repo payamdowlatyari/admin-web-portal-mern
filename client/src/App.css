@@ -2,3 +2,7 @@
     max-height: 100%;
     z-index: auto;
 }
+
+.content{
+    z-index: -1;
+}

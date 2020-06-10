@@ -13,8 +13,8 @@ export default class Completionstatus extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/90v76x08/';
 
   state = {
-    data:[],
-    list:[],
+    data: [],
+    list: [],
     eReduction: 0,
 
   };
@@ -47,10 +47,10 @@ export default class Completionstatus extends PureComponent {
         this.setState({ data: res.data.result });
       })
 
-      axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
+    axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
       .then(res => {
         let today = "";
-        
+
         var d = new Date();
         var weekday = new Array(7);
         weekday[0] = "Sunday";
@@ -62,10 +62,9 @@ export default class Completionstatus extends PureComponent {
         weekday[6] = "Saturday";
 
         let curDate = weekday[d.getDay()]
-        for(let i = 0; i < res.data.result.length; i++)
-        {
+        for (let i = 0; i < res.data.result.length; i++) {
           today = res.data.result[i].Date;
-          if(today == curDate)
+          if (today === curDate)
             this.setState({ list: res.data.result[i] });
         }
       })
@@ -74,75 +73,75 @@ export default class Completionstatus extends PureComponent {
   render() {
     return (
 
-  <Container>
-   <br></br>
-    <Row>
-     
-      
-     <Col md="4">
-         
-          <Table className="mb-0" bordered>
-            <thead>
-              <tr>
-               
-                <th>Completion status </th>
-                <th>Charger Count</th>
-  
-              </tr>
-            </thead>
-         
-            <tbody>
-              <tr key={this.state.list.Date}>
-                
-                <td>Premature</td>
-                <td> {this.state.list.Premature} </td>
-              </tr>
-              <tr key={this.state.list.Date}>
-                
-                <td>Ontime</td>
-                <td> {this.state.list.Ontime} </td>
-              </tr>
-              <tr key={this.state.list.Date}>
-                
-                <td>Late</td>
-                <td> {this.state.list.Late} </td>
-              </tr>
+      <Container>
+        <br></br>
+        <Row>
 
-              <tr key={this.state.list.Date}>
-                <td>Total</td>
-                <td> {this.state.list.Total} </td>
-              </tr>
-          
-            </tbody>
-          </Table>
-         
-      </Col>
 
-      <Col md="8">
-        
-        <BarChart
-          width={700}
-          height={300}
-          data={this.state.data}
-          margin={{
-            top: 20, right: 30, left: 20, bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="Date" />
-          <YAxis label={{ value: 'Count', angle: -90, position: 'insideLeft', offset: -5 }} />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="Premature" stackId="a" fill="#8884d8" />
-          <Bar dataKey="Ontime" stackId="a" fill="#82ca9d" />
-          <Bar dataKey="Late" stackId="a" fill="#81rd5w" />
-        </BarChart>
-      
-      </Col>
-    
-    </Row>
-   
-  </Container>
+          <Col md="4">
+
+            <Table className="mb-0" bordered>
+              <thead>
+                <tr>
+
+                  <th>Completion status </th>
+                  <th>Charger Count</th>
+
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr key={this.state.list.Date}>
+
+                  <td>Premature</td>
+                  <td> {this.state.list.Premature} </td>
+                </tr>
+                <tr key={this.state.list.Date}>
+
+                  <td>Ontime</td>
+                  <td> {this.state.list.Ontime} </td>
+                </tr>
+                <tr key={this.state.list.Date}>
+
+                  <td>Late</td>
+                  <td> {this.state.list.Late} </td>
+                </tr>
+
+                <tr key={this.state.list.Date}>
+                  <td>Total</td>
+                  <td> {this.state.list.Total} </td>
+                </tr>
+
+              </tbody>
+            </Table>
+
+          </Col>
+
+          <Col md="8">
+
+            <BarChart
+              width={700}
+              height={300}
+              data={this.state.data}
+              margin={{
+                top: 20, right: 30, left: 20, bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="Date" />
+              <YAxis label={{ value: 'Count', angle: -90, position: 'insideLeft', offset: -5 }} />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="Premature" stackId="a" fill="#8884d8" />
+              <Bar dataKey="Ontime" stackId="a" fill="#82ca9d" />
+              <Bar dataKey="Late" stackId="a" fill="#81rd5w" />
+            </BarChart>
+
+          </Col>
+
+        </Row>
+
+      </Container>
     );
   }
 }
