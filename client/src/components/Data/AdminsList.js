@@ -6,7 +6,8 @@ const Admin = props => (
     <tr>
         <td>{props.admin.name}</td>
         <td>{props.admin.email}</td>
-        <td>********</td>
+        {/* <td>{props.admin.password}</td> */}
+        <td>***********</td>
         <td>{props.admin.date.substring(0, 10)}</td>
         <td>
             <Link to={"/EditAdmin/" + props.admin._id}>edit</Link> | <Link href="#" onClick={() => { props.deleteAdmin(props.admin._id) }}>delete</Link>

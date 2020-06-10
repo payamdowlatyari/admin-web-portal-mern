@@ -10,15 +10,29 @@ import axios from "axios";
 
 
 export default class EnergyDemand extends PureComponent {
+
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
-  state = {
-    today_high: 50,
-    today_low: 25,
-    data: [],
-    info: [],
-    total: 0
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      today_high: 50,
+      today_low: 25,
+      data: [],
+      info: [],
+      total: 0,
+      threshold: 9800
+    };
+    this.handleChange = this.handleChange.bind(this);
+
+
+  }
+
+  handleChange(event) {
+    this.setState({ threshold: event.target.value });
+  }
+
 
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
@@ -69,8 +83,14 @@ export default class EnergyDemand extends PureComponent {
     return (
       <Container>
 
-        <header>
+        <header style={{ marginBottom: '100px' }}>
           <h3 style={{ textALign: "middle" }}> Demand for Electricity</h3>
+
+          <label style={{ float: 'right' }} >
+            <h5>Threshold:</h5>
+            <input value={this.state.threshold} onChange={this.handleChange} />
+          </label>
+
 
         </header>
         <AreaChart
@@ -78,7 +98,7 @@ export default class EnergyDemand extends PureComponent {
           height={500}
           data={this.state.data}
           margin={{
-            top: 15, right: 30, left: 0, bottom: 0,
+            top: 15, right: 30, left: 0, bottom: 10,
           }}
         >
           <defs>
@@ -96,7 +116,7 @@ export default class EnergyDemand extends PureComponent {
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" />
-          <ReferenceLine y={9800} label="Max" stroke="red" />
+          <ReferenceLine y={this.state.threshold} label="Max" stroke="red" />
           <XAxis dataKey="Time" />
           <YAxis label={{ value: 'MW', angle: -90, offset: 5, position: 'insideLeft' }} />
           <Tooltip />
