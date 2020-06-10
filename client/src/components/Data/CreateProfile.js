@@ -146,6 +146,7 @@ export default class CreateProfile extends Component {
         <h3>Create New User Profiles</h3>
 
         <form onSubmit={this.onSubmit}>
+
           <Row>
             <Col>
               <div className="form-group">
@@ -164,19 +165,6 @@ export default class CreateProfile extends Component {
                     })
                   }
                 </select>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <div className="form-group">
-                <label>Make: </label>
-                <input type="text"
-                  required
-                  className="form-control"
-                  value={this.state.make}
-                  onChange={this.onChangeMake}
-                />
               </div>
 
               <div className="form-group">
@@ -218,6 +206,15 @@ export default class CreateProfile extends Component {
             </Col>
             <Col>
               <div className="form-group">
+                <label>Make: </label>
+                <input type="text"
+                  required
+                  className="form-control"
+                  value={this.state.make}
+                  onChange={this.onChangeMake}
+                />
+              </div>
+              <div className="form-group">
                 <label>Model: </label>
                 <input
                   type="text"
@@ -252,7 +249,7 @@ export default class CreateProfile extends Component {
                 <div>
                   <DatePicker
                     selected={this.state.end}
-                    onChange={this.onChangeEnvironment}
+                    onChange={this.onChangeEnd}
                   />
                 </div>
               </div>

@@ -7,7 +7,7 @@ class Contact extends Component {
 
     render() {
         return (
-            <Container style={{ zIndex: "0" }}>
+            <Container >
                 <br></br>
                 <h1>Contact Us</h1>
                 <hr></hr>

@@ -36,7 +36,7 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 // Routes
-app.use("/api/users", users);
+app.use('/api/users', users);
 app.use('/api/usernames', usersRouter);
 app.use('/api/profiles', profilesRouter);
 

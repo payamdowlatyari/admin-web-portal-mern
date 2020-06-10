@@ -17,9 +17,9 @@ export default class EditAdmin extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            name: '',
-            email: '',
-            password: '',
+            name: 'Name',
+            email: 'Email',
+            password: 'Password',
             date: new Date()
         }
     }
@@ -27,6 +27,7 @@ export default class EditAdmin extends Component {
     componentDidMount() {
         axios.get('/api/users/' + this.props.match.params.id)
             .then(response => {
+
                 this.setState({
                     name: response.data.name,
                     email: response.data.email,
@@ -90,8 +91,6 @@ export default class EditAdmin extends Component {
 
                     <Row>
                         <Col>
-
-
                             <div className="form-group">
                                 <label>Name: </label>
                                 <input type="text"

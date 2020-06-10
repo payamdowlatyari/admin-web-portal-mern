@@ -62,7 +62,7 @@ export default class MobileProfilesList extends Component {
                                     <td>{currentprofile.starttime}</td>
                                     <td>{currentprofile.endtime}</td>
                                     <td>
-                                        <Link to={"/EditMobileProfile/" + currentprofile._id.$oid}>edit</Link> | <a href="#" onClick={() => { this.deleteProfile(currentprofile._id) }}>delete</a>
+                                        <Link to={"/EditMobileProfile/" + currentprofile._id.$oid}>edit</Link> | <Link href="#" onClick={() => { this.deleteProfile(currentprofile._id) }}>delete</Link>
                                     </td>
                                 </tr>
                             )

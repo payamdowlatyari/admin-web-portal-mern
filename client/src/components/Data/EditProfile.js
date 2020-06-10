@@ -164,40 +164,17 @@ export default class EditProfile extends Component {
 
           <Row>
             <Col>
-
-
               <div className="form-group">
                 <label>Username: </label>
-                <select ref="userInput"
+                <input type="text"
                   disabled="disabled"
-
                   required
                   className="form-control"
                   value={this.state.username}
-                  onChange={this.onChangeUsername}>
-                  {
-                    this.state.users.map(function (user) {
-                      return <option
-                        key={user}
-                        value={user}>{user}
-                      </option>;
-                    })
-                  }
-                </select>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <div className="form-group">
-                <label>Make: </label>
-                <input type="text"
-                  required
-                  className="form-control"
-                  value={this.state.make}
-                  onChange={this.onChangeMake}
+                  onChange={this.onChangeUsername}
                 />
               </div>
+
 
               <div className="form-group">
                 <label>Cost: </label>
@@ -237,6 +214,15 @@ export default class EditProfile extends Component {
               </div>
             </Col>
             <Col>
+              <div className="form-group">
+                <label>Make: </label>
+                <input type="text"
+                  required
+                  className="form-control"
+                  value={this.state.make}
+                  onChange={this.onChangeMake}
+                />
+              </div>
               <div className="form-group">
                 <label>Model: </label>
                 <input

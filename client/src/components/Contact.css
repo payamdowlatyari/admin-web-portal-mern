@@ -1,5 +1,5 @@
 .container{
-    z-index: 0;
+    z-index: auto;
 }
  .contact-form {
      margin: 0 auto;
@@ -20,11 +20,11 @@
      margin-top: 6px;
      margin-bottom: 16px;
      resize: vertical;
-     z-index: 100;
+     /* z-index: 100; */
 }
 
 .contact-form form{
-    z-index: auto;
+    position: relative;
 
 }
 
