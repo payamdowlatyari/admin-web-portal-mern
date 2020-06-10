@@ -9,7 +9,7 @@ export default class Example extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
 
   state = {
-    data:[]
+    data: []
   }
 
   componentDidMount() {
@@ -22,19 +22,19 @@ export default class Example extends PureComponent {
         let curHour = d.getHours();
         let count = 7;
         let tempList = [];
-        for(let i = curHour; i >= 0; i--)
-        {
+        console.log(curHour);
+        for (let i = curHour; i >= 0; i--) {
 
-          if(count > 0)
-          {
-            for(let j = 0; j < res.data.result.length; j++) {
+          if (count > 0) {
+            for (let j = 0; j < res.data.result.length; j++) {
               tmpnum = res.data.result[j].number;
-              if(tmpnum === i) {
+              if (tmpnum === i) {
                 tempList.push(res.data.result[j]);
+                console.log(res.data.result[j]);
                 break;
               }
             }
-            if(i === 0) i = 24;
+            if (i === 0) i = 24;
             count--;
           } else {
             break;
@@ -44,7 +44,7 @@ export default class Example extends PureComponent {
 
 
       })
-    }
+  }
 
   render() {
     return (
