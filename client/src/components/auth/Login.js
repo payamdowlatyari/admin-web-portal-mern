@@ -59,9 +59,9 @@ class Login extends Component {
         <div className="row">
           <div className="col" style={{ marginTop: '30%' }}>
 
-            <div className="col s12" style={{ textAlign: 'right' }}>
+            <div className="col s12" style={{ textAlign: 'center' }}>
               <h3>
-                <b>Login</b> below
+                <b>Login</b> Below
               </h3>
 
             </div>
@@ -115,7 +115,7 @@ class Login extends Component {
             <p className="grey-text text-darken-1">
               <Link to="/" className="btn-flat waves-effect">
                 Back to
-               home
+                home
             </Link>
             </p>
           </div>

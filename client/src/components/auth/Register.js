@@ -59,9 +59,9 @@ class Register extends Component {
       <div className="container" style={{ width: "20%", float: "center", minWidth: "300px" }}>
         <div className="row" >
           <div className="col" style={{ marginTop: '30%' }}>
-            <div className="col s12" style={{ textAlign: 'right' }}>
+            <div className="col s12" style={{ textAlign: 'center' }}>
               <h3>
-                <b>Register</b> below
+                <b>Register</b> Below
               </h3>
             </div>
             <Form noValidate onSubmit={this.onSubmit}>
