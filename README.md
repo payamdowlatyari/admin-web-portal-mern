@@ -31,18 +31,19 @@ and run:
 Now you must see the following messages: 
 
 Server up and running on port 5000 !
-[0] MongoDB successfully connected
-[1] ℹ ｢wds｣: Project is running at http://0.0.0.0:3000/
-[1] ℹ ｢wds｣: webpack output is served from 
-[1] ℹ ｢wds｣: Content not from webpack is served from *******/admin-web-portal-mern/client/public
-[1] ℹ ｢wds｣: 404s will fallback to /
-[1] Starting the development server...
-[1] 
-[1] Compiled successfully!
-[1] 
-[1] You can now view client in the browser.
-[1] 
-[1]   http://localhost:3000
+
+        MongoDB successfully connected
+        Project is running at http://0.0.0.0:3000/
+        webpack output is served from 
+        Content not from webpack is served from *******/admin-web-portal-mern/client/public
+        404s will fallback to /
+    Starting the development server...
+
+    Compiled successfully!
+    
+    You can now view client in the browser.
+
+      http://localhost:3000
 
 
 ### Setup the MongoDB database
