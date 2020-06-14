@@ -17,19 +17,19 @@ export default class Example extends PureComponent {
     data: [],
     cost: []
   };
-
+  //axios api call for retrieving the data from the 'dailyUserElectricityCost' collection in the db
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=dailyUserElectricityCost")
       .then(res => {
         this.setState({ data: res.data.result });
       })
-
+  //axios api call for retrieving the data from the 'infoHistory' collection in the db
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=infoHistory")
       .then(res => {
         this.setState({ cost: res.data.result });
       })
   }
-
+//This graph pertains to the cost of electricity 
   render() {
     return (
 

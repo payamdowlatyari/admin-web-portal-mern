@@ -27,7 +27,7 @@ class StatsCard extends React.Component {
     idle: 0,
     disconnected: 0
   }
-
+//axios api call for retrieving the data from the 'chargerCount' collection in the db
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
@@ -60,7 +60,7 @@ class StatsCard extends React.Component {
         this.setState({ abandoned: abUser });
       });
   }
-
+   //This is to display the cards of the different charger types at the top of the general page.
   render() {
     return (
       <>

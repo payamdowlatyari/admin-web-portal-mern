@@ -11,7 +11,7 @@ export default class Example extends PureComponent {
   state = {
     data: []
   }
-
+//axios api call for retrieving the data from the 'chargerCount' collection in the db
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
@@ -23,29 +23,29 @@ export default class Example extends PureComponent {
         let count = 7;
         let tempList = [];
         console.log(curHour);
-        for (let i = curHour; i >= 0; i--) {
+        for (let i = curHour; i >= 0; i--) { 
 
           if (count > 0) {
             for (let j = 0; j < res.data.result.length; j++) {
               tmpnum = res.data.result[j].number;
               if (tmpnum === i) {
-                tempList.push(res.data.result[j]);
+                tempList.push(res.data.result[j]);  //Pushes the results from the collection to the temp list.
                 console.log(res.data.result[j]);
                 break;
               }
             }
-            if (i === 0) i = 24;
-            count--;
+            if (i === 0) i = 24; //resets the time back to 24 which would be 12 am.
+            count--;  //decrement count after each iteration, currently shows the past 6 hours.
           } else {
             break;
           }
         }
-        this.setState({ data: tempList.reverse() });
+        this.setState({ data: tempList.reverse() }); //sets the list to the data array.
 
 
       })
   }
-
+//The graph for this relates to the charger options graph.
   render() {
     return (
       <BarChart

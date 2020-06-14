@@ -41,18 +41,19 @@ export default class Completionstatus extends PureComponent {
   //       });
   //     });
   // }
+  //axios api call for retrieving the data from the 'completionStatus' collection in the db
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
       .then(res => {
         this.setState({ data: res.data.result });
       })
-
+  //axios api call for retrieving the data from the 'completionStatus' collection in the db
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=completionStatus")
       .then(res => {
         let today = "";
 
         var d = new Date();
-        var weekday = new Array(7);
+        var weekday = new Array(7); //array is used to store the days of the week
         weekday[0] = "Sunday";
         weekday[1] = "Monday";
         weekday[2] = "Tuesday";
@@ -61,15 +62,15 @@ export default class Completionstatus extends PureComponent {
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
 
-        let curDate = weekday[d.getDay()]
+        let curDate = weekday[d.getDay()] //once the current date is grabbed it must be converted 
         for (let i = 0; i < res.data.result.length; i++) {
-          today = res.data.result[i].Date;
-          if (today === curDate)
+          today = res.data.result[i].Date;    //looks through the dates in the collection          
+          if (today === curDate)  //checks to match the correct.
             this.setState({ list: res.data.result[i] });
         }
       })
   }
-
+// The graph for this relates to the completion statues graph
   render() {
     return (
 

@@ -33,7 +33,7 @@ export default class EnergyDemand extends PureComponent {
     this.setState({ threshold: event.target.value });
   }
 
-
+   //axios api call for retrieving the data from the 'chargerCount' collection in the db
   componentDidMount() {
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=chargerCount")
       .then(res => {
@@ -42,21 +42,21 @@ export default class EnergyDemand extends PureComponent {
         //console.log(this.res.data.result)
         var d = new Date();
         let curHour = d.getHours();
-        let count = 16;
-        let tempList = [];
+        let count = 16;                       
+        let tempList = [];                   
         console.log(curHour);
         for (let i = curHour; i >= 0; i--) {
 
           if (count > 0) {
-            for (let j = 0; j < res.data.result.length; j++) {
-              tmpnum = res.data.result[j].number;
+            for (let j = 0; j < res.data.result.length; j++) {          
+              tmpnum = res.data.result[j].number;  //loops through the collection       
               if (tmpnum === i) {
-                tempList.push(res.data.result[j]);
-                console.log(res.data.result[j]);
+                tempList.push(res.data.result[j]); //Pushes this to the list if it is in the collection
+                console.log(res.data.result[j]);   
                 break;
               }
             }
-            if (i === 0) i = 24;
+            if (i === 0) i = 24; //if the list gets to zero and count is not zero this will reset it to 12 am
             count--;
           } else {
             break;
@@ -64,11 +64,11 @@ export default class EnergyDemand extends PureComponent {
         }
         this.setState({ data: tempList.reverse() });
 
-      });
+      }); //axios api call for retrieving the data from the 'infoHistory' collection in the db
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=infoHistory")
       .then(res => {
         this.setState({ info: res.data.result });
-      });
+      }); //axios api call for retrieving the data from the 'electricityCostSummary' collection in the db
     axios.get("https://cpmqtt1.calit2.uci.edu/api.php?collection=electricityCostSummary")
       .then(res => {
         let tmpTotal = 0;
@@ -78,7 +78,7 @@ export default class EnergyDemand extends PureComponent {
         this.setState({ total: tmpTotal });
       });
   }
-
+  //This graphs shows the demand of electricity in California
   render() {
     return (
       <Container>
